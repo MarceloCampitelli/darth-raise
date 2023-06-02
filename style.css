@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-header {
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+}
+
+header .logo span {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.panel {
+  background-color: #f9f9f9;
+  padding: 5px 20px 10px;
+  margin-bottom: 10px;
+}
+
+.area-texto {
+  resize: none;
+  width: 98.5%;
+  height: 150px;
+  max-height: 150px;
+  padding:10px;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.radio-label {
+  margin-right: 5px;
+}
+
+.radio-input {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.radio-input:checked {
+  border-color: #007bff;
+}
+
+.radio-input:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+}
+
+.area-button {
+  display: flex;
+  min-width: 100%;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.button:hover {
+  background-color: rgb(129, 199, 132);
+}
+
+.panel2 {
+  margin-bottom: 80px;
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  height: 30px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: auto;
+}
+
+footer .logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+footer .logo img {
+  width: 30px;
+  height: 30px;
+}
+
+footer .text {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px;
+  font-weight: bold;
+}
