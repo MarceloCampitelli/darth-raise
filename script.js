@@ -3,10 +3,13 @@ function formatarTexto() {
   var textoInserido = document.getElementById('texto-inserido').value;
 
   // Substituir os caracteres especiais por espaços
-  var textoSubstituido = textoInserido.replace(/[.,\/\\;:()]/g, ' ');
+  var textoSubstituido = (textoInserido.replace(/[.,\/\\;:()]/g, ' ')).replace("into",' ');
+
+  //Convertar tabulação(tabs) em espaços
+  var textoConvertido = textoSubstituido.replace(/\t/g, ' ');
 
   // Quebrar o texto em linhas
-  var linhas = textoSubstituido.split('\n');
+  var linhas = textoConvertido.split('\n');
 
   // Filtrar as palavras que terminam com "_w" ou "_p" em todas as linhas
   var palavrasFormatadas = [];
@@ -15,6 +18,7 @@ function formatarTexto() {
     var palavras = linhas[i].split(' ');
     for (var j = 0; j < palavras.length; j++) {
       if ((palavras[j].endsWith('_w') || palavras[j].endsWith('_p')) && !palavrasExibidas[palavras[j]]) {
+        
         var palavraFormatada = "|| chr(13) || '" + palavras[j] + ": ' || " + palavras[j];
         palavrasFormatadas.push(palavraFormatada);
         palavrasExibidas[palavras[j]] = true;
@@ -42,7 +46,8 @@ function formatarTexto() {
 }
 
 function limparPainel() {
-  // Limpar o conteúdo do painel de saída
+  // Limpar o conteúdo dos dois paineis
+  document.getElementById('texto-inserido').value = '';
   document.getElementById('texto-formatado').innerHTML = "";
 }
 
