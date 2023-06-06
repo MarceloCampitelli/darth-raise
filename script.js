@@ -10,6 +10,9 @@ function formatarTexto() {
 
   // Quebrar o texto em linhas
   var linhas = textoConvertido.split('\n');
+  
+  // Verificar opção selecionada
+  var modoFormatacao = document.querySelector('input[name="modo-formatacao"]:checked').value;
 
   // Filtrar as palavras que terminam com "_w" ou "_p" em todas as linhas
   var palavrasFormatadas = [];
@@ -18,8 +21,11 @@ function formatarTexto() {
     var palavras = linhas[i].split(' ');
     for (var j = 0; j < palavras.length; j++) {
       if ((palavras[j].endsWith('_w') || palavras[j].endsWith('_p')) && !palavrasExibidas[palavras[j]]) {
-        
-        var palavraFormatada = "|| chr(13) || '" + palavras[j] + ": ' || " + palavras[j];
+        if (modoFormatacao ==='modo2') {
+          var palavraFormatada = "|| '" + palavras[j] + ": ' || " + palavras[j] + " || ' |'";
+        } else {
+          var palavraFormatada = "|| chr(13) || '" + palavras[j] + ": ' || " + palavras[j];
+        }
         palavrasFormatadas.push(palavraFormatada);
         palavrasExibidas[palavras[j]] = true;
       }
@@ -29,11 +35,11 @@ function formatarTexto() {
   // Gerar o texto formatado ou exibir mensagem de nenhum resultado encontrado
   var textoFormatado = "";
   if (palavrasFormatadas.length > 0) {
-    var modoFormatacao = document.querySelector('input[name="modo-formatacao"]:checked').value;
+    
     if (modoFormatacao === 'modo1') {
       textoFormatado = "raise_application_error(-20000," + '\n' + palavrasFormatadas.join('\n') + ");";
     } else if (modoFormatacao === 'modo2') {
-      textoFormatado = "wheb_mensagem_pck.exibir_mensagem_abort(191072," + '\n' + palavrasFormatadas.join('\n') + ");";
+      textoFormatado = "wheb_mensagem_pck.exibir_mensagem_abort(191072, 'ERRO='" + '\n' + palavrasFormatadas.join('\n') + ");";
     } else if (modoFormatacao === 'modo3') {
       textoFormatado = "insert into nm_tabela (nm_campo) values (" + '\n' + palavrasFormatadas.join('\n') + ");";
     }
@@ -70,10 +76,15 @@ function copiarTexto() {
     document.body.removeChild(tempInput);
 
     // Exibir uma mensagem ao usuário
-    alert('Texto copiado para a área de transferência!');
+    swal({
+      text: "Texto copiado com sucesso!",
+      icon: "success"
+    });
+    
+
   } else {
     // Exibir uma mensagem ao usuário quando não houver texto no segundo painel
-    alert('Não há texto para copiar!');
+    swal ( "Oops" ,  "Formata um texto primeiro pra depois copiar o resultado" ,  "error" )    
   }
 }
 
