@@ -37,7 +37,7 @@ function formatarTexto() {
   if (palavrasFormatadas.length > 0) {
     
     if (modoFormatacao === 'modo1') {
-      textoFormatado = "raise_application_error(-20000," + '\n' + palavrasFormatadas.join('\n') + ");";
+      textoFormatado = "raise_application_error(-20000, 'Atributos:'" + '\n' + palavrasFormatadas.join('\n') + ");";
     } else if (modoFormatacao === 'modo2') {
       textoFormatado = "wheb_mensagem_pck.exibir_mensagem_abort(191072, 'ERRO='" + '\n' + palavrasFormatadas.join('\n') + ");";
     } else if (modoFormatacao === 'modo3') {
